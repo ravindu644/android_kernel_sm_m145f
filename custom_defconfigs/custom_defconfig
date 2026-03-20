@@ -14,29 +14,34 @@ CONFIG_KSU=y
 CONFIG_KSU_KPROBES_HOOK=n
 CONFIG_KSU_LSM_SECURITY_HOOKS=y
 
-# Droidspaces
-# Must disable this to avoid build errors
+# Droidspaces support for GKI
+# Disable this to avoid build errors when using the AOSP build system.
+# Also, pass the variables below to AOSP build.sh/prepare_vendor.sh
+# when using the AOSP build system:
+# TRIM_NONLISTED_KMI=0 KMI_SYMBOL_LIST_STRICT_MODE=0 ABI_DEFINITION=""
 CONFIG_TRIM_UNUSED_KSYMS=n
 
 # IPC mechanisms (required for tools that rely on shared memory and IPC namespaces)
-CONFIG_SYSCTL=y
 CONFIG_SYSVIPC=y
 CONFIG_POSIX_MQUEUE=y
 
 # Core namespace support (essential for isolation and running init systems)
-CONFIG_NAMESPACES=y
 CONFIG_PID_NS=y
 CONFIG_UTS_NS=y
 CONFIG_IPC_NS=y
-CONFIG_USER_NS=y
 CONFIG_NET_NS=y
 
 # Device filesystem support (enables hardware access when --hw-access is enabled)
 CONFIG_DEVTMPFS=y
 
+# Seccomp support (enables syscall filtering and security hardening)
+CONFIG_SECCOMP=y
+CONFIG_SECCOMP_FILTER=y
+
 # Control groups support (required for systemd and resource accounting)
-CONFIG_CGROUPS=y
 CONFIG_CGROUP_DEVICE=y
+CONFIG_CGROUP_PIDS=y
+CONFIG_CFS_BANDWIDTH=y
 
 # Networking for Docker
 # Use iptables legacy:

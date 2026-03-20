@@ -7,3 +7,7 @@ out
 *.orig
 kernel_platform/build.config
 dist/
+exports.txt
+device/
+kernel_platform/build.config
+custom_defconfigs/version_defconfig

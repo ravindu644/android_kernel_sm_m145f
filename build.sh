@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Initialize git submodules
+git submodule update --init --recursive || true
+
 export WDIR="$(dirname $(readlink -f $0))" && cd "$WDIR"
 export MERGE_CONFIG="${WDIR}/kernel_platform/common/scripts/kconfig/merge_config.sh"
 
